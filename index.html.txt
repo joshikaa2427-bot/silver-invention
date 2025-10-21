@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Password Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 Password Manager</h1>
+    <input type="text" id="site" placeholder="Website Name" />
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="savePassword()">Save</button>
+
+    <h2>Saved Passwords</h2>
+    <ul id="list"></ul>
+  </div>
+
+  <script>
+    function savePassword() {
+      const site = document.getElementById('site').value;
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      if (!site || !user || !pass) {
+        alert("Please fill all fields!");
+        return;
+      }
+
+      const list = document.getElementById('list');
+      const item = document.createElement('li');
+      item.textContent = `${site} — ${user} — ${pass}`;
+      list.appendChild(item);
+
+      // clear inputs
+      document.getElementById('site').value = '';
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+    }
+  </script>
+</body>
+</html>
